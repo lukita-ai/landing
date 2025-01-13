@@ -20,7 +20,7 @@ export default function Home() {
           <p className="text-xl text-muted-foreground mb-8">
             Lukita AI is crafting an intelligent financial assistant to transform how you manage your money.
           </p>
-          
+
           {/* Loading Animation */}
           <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div>
         </div>

@@ -1,31 +1,21 @@
 "use client";
 
-import { useTheme } from "./theme-provider"
-import { useEffect, useState } from "react"
+import { useTheme } from "next-themes"
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null // Prevent flash of incorrect theme
-  }
+  const { setTheme, resolvedTheme } = useTheme()
 
   return (
     <div className="relative">
       <button
         onClick={() => {
-          const nextTheme = theme === "dark" ? "light" : "dark"
+          const nextTheme = resolvedTheme === "dark" ? "light" : "dark"
           setTheme(nextTheme)
         }}
         className="p-2 rounded-lg bg-background hover:bg-muted transition-colors"
         aria-label="Toggle theme"
       >
-        {theme === "dark" ? (
+        {resolvedTheme === "dark" ? (
           <SunIcon className="w-5 h-5" />
         ) : (
           <MoonIcon className="w-5 h-5" />
@@ -71,4 +61,4 @@ function MoonIcon(props: React.SVGProps<SVGSVGElement>) {
       />
     </svg>
   )
-} 
+}
